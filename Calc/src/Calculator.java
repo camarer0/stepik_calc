@@ -1,8 +1,11 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class Calculator {
-    static public void main (String []args) {
-        Scanner sc = new Scanner (System.in);
+    static public void main (String []args) throws FileNotFoundException {
+        File file = new File("C:\\Users\\perov\\IdeaProjects\\stepik_calc\\Calc\\src\\input.txt");
+        Scanner sc = new Scanner (file);
         String line = sc.nextLine();
         sc.close();
         double a = 0.0;
