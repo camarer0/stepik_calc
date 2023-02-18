@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 class Calculator {
@@ -50,14 +49,26 @@ class Calculator {
             }
         }
         if(is) {
+            double res = 0;
             switch (znak) {
-                case ('+') -> System.out.print(a + b);
-                case ('-') -> System.out.print(a - b);
-                case ('/') -> {
+                case ('+'): System.out.print(a + b); res=a+b; break;
+                case ('-'):System.out.print(a - b); res=a-b; break;
+                case ('/'):{
                     if (b == 0.0) System.out.print("Error! Division by zero");
-                    else System.out.print(a / b);
+                    else {
+                        System.out.print(a / b);
+                        res=a/b;
+                        break;
+                    }
                 }
-                case ('*') -> System.out.print(a * b);
+                case ('*'):System.out.print(a * b); res=a*b; break;
+            }
+            try(FileWriter writer = new FileWriter("C:\\Users\\perov\\IdeaProjects\\stepik_calc\\Calc\\src\\output.txt", true)){
+                writer.write(res+"");
+            }
+            catch(IOException ex){
+
+                System.out.println(ex.getMessage());
             }
         }
     }
